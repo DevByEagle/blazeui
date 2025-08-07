@@ -21,6 +21,11 @@ add_library(BlazeUI ${SOURCES})
 if(BUILD_SHARED_LIBS)
     if(WIN32)
         set_target_properties(BlazeUI PROPERTIES PREFIX "")
+        # target_compile_definitions(BlazeUI PRIVATE BLAZEUI_BUILD_DLL)
+        target_compile_definitions(BlazeUI
+            PRIVATE $<BUILD_INTERFACE:BLAZEUI_BUILD_DLL>
+            INTERFACE $<INSTALL_INTERFACE:BLAZEUI_USE_DLL>
+        )
     endif()
     set_target_properties(BlazeUI PROPERTY POSITION_INDEPENDENT_CODE ON)
 endif()
@@ -34,5 +39,3 @@ target_include_directories(BlazeUI
 if(BUILD_EXAMPLES)
     add_subdirectory(examples)
 endif()
-
-#include <Blaze/Wegits.h>

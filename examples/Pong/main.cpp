@@ -1,7 +1,8 @@
+#include <Blaze/Blaze.h>
 #include <Blaze/Widgets.h>
 #include <iostream>
 
 int main() {
-    std::cout << "Hello, World!\n";
+    Blaze::Label* label = new Blaze::Label();
     return 0;
 }
