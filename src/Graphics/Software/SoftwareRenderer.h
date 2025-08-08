@@ -3,12 +3,10 @@
 #include "Blaze/Graphics.h"
 
 namespace Blaze {
-    class SoftwareRenderer : public Renderer
+    class SoftwareRenderer final : public GraphicsDevice
     {
     public:
-        SoftwareRenderer();
         ~SoftwareRenderer() override;
 
-        void DrawRect(int x, int y, int width, int height, const Color& color) override;
     };
 }

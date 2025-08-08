@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #if defined(_WIN32) || defined(_WIN64)
     #if defined(BLAZEUI_BUILD_DLL)
         #define BLAPI __declspec(dllexport)
@@ -16,13 +18,11 @@
     #endif
 #endif
 
-#include "Events.h"
 #include "Graphics.h"
 
 namespace Blaze {
-    /* Functions */
-    
-    /* Types */
-    struct Vector2 {
-    };
+    class GraphicsDevice;
+    enum class GraphicsBackend;
+
+    BLAPI std::unique_ptr<GraphicsDevice> CreateDevice(GraphicsBackend backend);
 }
