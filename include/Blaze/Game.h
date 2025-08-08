@@ -5,10 +5,13 @@
 namespace Blaze {
     class BLAPI Application {
     public:
-        Application(std::unique_ptr<GraphicsDevice>& graphicsDevice);
-        virtual ~Application();
+       explicit Application(std::unique_ptr<GraphicsDevice>& graphicsDevice);
+       virtual ~Application();
 
-        BLAPI void Run();
+        void Run();
+        bool IsRunning() const;
+    private:
+        bool m_Running = false;
     };
 
     class BLAPI Game : public Application {

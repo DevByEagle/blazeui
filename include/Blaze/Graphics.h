@@ -7,7 +7,7 @@ namespace Blaze {
      * @see Blaze::GraphicsDevice 
      */
     enum class GraphicsBackend {
-        /// @brief 
+        /// @brief No graphics backend selected
         None = 0,
         /// @brief Microsoft DirectX API (Windows only)
         DirectX,
