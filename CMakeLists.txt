@@ -17,6 +17,7 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
 include_directories(include)
 
 add_library(BlazeUI ${SOURCES})
+target_precompile_headers(BlazeUI PRIVATE src/pch.h)
 
 if(BUILD_SHARED_LIBS)
     if(WIN32)

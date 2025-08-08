@@ -3,6 +3,6 @@
 #include <iostream>
 
 int main() {
-    Blaze::Label* label = new Blaze::Label();
+    Blaze::Color color(50, 50, 50, .5f);
     return 0;
 }

@@ -1,14 +1,19 @@
 #pragma once
 
+#include <optional>
+#include "Blaze.h"
+
 namespace Blaze {
-    class Container
+    class BLAPI Element
     {
     };
-    
-    class Label
+
+    class BLAPI Container
+    {
+    };
+
+    class BLAPI Label
     {
     };
 }
 
-
-Blaze::Label* label = new Blaze::Label();

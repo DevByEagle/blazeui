@@ -1,5 +1,7 @@
 #pragma once
 
+#include <algorithm>
+
 #if defined(_WIN32) || defined(_WIN64)
     #if defined(BLAZEUI_BUILD_DLL)
         #define BLAPI __declspec(dllexport)
@@ -17,8 +19,24 @@
 #endif
 
 namespace Blaze {
-    struct BLAPI Color
-    {
+    /* Functions */
+    
+    /* Types */
+    struct Color {
+        float r, g, b, a;
+
+        constexpr Color() noexcept : r(0), g(0), b(0), a(1) {}
+        constexpr Color(float red, float green, float blue, float opacity = 1) : r(std::clamp(red, 0.0f, 1.0f)), g(std::clamp(green, 0.0f, 1.0f)), b(std::clamp(blue, 0.0f, 1.0f)), a(std::clamp(opacity, 0.0f, 1.0f)) {}
+
+        static Color fromHSL(float hue, float saturation, float brightness, float opacity = 1);
+
+        bool operator==(const Color& other);
+
+    private:
+        Color(Color&&) = delete;
+    };
+
+    struct Vector2 {
     };
 }
 
