@@ -2,7 +2,10 @@
 #include <Blaze/Widgets.h>
 #include <iostream>
 
+using namespace Blaze;
+
 int main() {
-    Blaze::Color color(50, 50, 50, .5f);
+    Container container;
+    container.backgroundColor = Color::Black;
     return 0;
 }

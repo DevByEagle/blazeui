@@ -30,13 +30,23 @@ namespace Blaze {
 
         static Color fromHSL(float hue, float saturation, float brightness, float opacity = 1);
 
-        bool operator==(const Color& other);
+        Color& operator=(const Color& other) noexcept;
+        bool operator==(const Color& other) const noexcept;
+        bool operator!=(const Color& other) const noexcept;
+
+        static const Color Black;
+        static const Color Blue;
+        static const Color Gray;
+        static const Color Green;
+        static const Color Red;
+        static const Color Transparent;
+        static const Color White;
 
     private:
         Color(Color&&) = delete;
+        Color& operator=(Color&&) = delete;
     };
 
     struct Vector2 {
     };
 }
-

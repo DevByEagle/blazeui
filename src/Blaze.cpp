@@ -30,8 +30,33 @@ namespace Blaze {
         return Color(r, g, b, opacity);
     }
 
-    bool Color::operator==(const Color& rhs) 
+    Color& Color::operator=(const Color& other) noexcept 
     {
-        return true;
+        if (this != &other) {
+            r = other.r;
+            g = other.g;
+            b = other.b;
+            a = other.a;
+        }
+        return *this;
     }
+
+    bool Color::operator==(const Color& other) const noexcept
+    {
+        return r == other.r && g == other.g && b == other.b && a == other.a;
+    }
+
+    bool Color::operator!=(const Color& other) const noexcept 
+    {
+        return !(*this == other);
+    }
+
+    // Color asignments
+    const Color Color::Black = Color(0, 0, 0, 1);
+    const Color Color::Blue = Color(0, 0, 1, 1);
+    const Color Color::Gray = Color(0.5, 0.5, 0.5, 1);
+    const Color Color::Green = Color(0, 1, 0, 1);
+    const Color Color::Red = Color(1, 0, 0, 1);
+    const Color Color::Transparent = Color(0, 0, 0, 0);
+    const Color Color::White = Color(1, 1, 1, 1);
 }

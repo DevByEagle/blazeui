@@ -17,18 +17,17 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
 include_directories(include)
 
 add_library(BlazeUI ${SOURCES})
-target_precompile_headers(BlazeUI PRIVATE src/pch.h)
+target_precompile_headers(BlazeUI PUBLIC src/pch.h)
 
 if(BUILD_SHARED_LIBS)
     if(WIN32)
         set_target_properties(BlazeUI PROPERTIES PREFIX "")
-        # target_compile_definitions(BlazeUI PRIVATE BLAZEUI_BUILD_DLL)
         target_compile_definitions(BlazeUI
             PRIVATE $<BUILD_INTERFACE:BLAZEUI_BUILD_DLL>
             INTERFACE $<INSTALL_INTERFACE:BLAZEUI_USE_DLL>
         )
     endif()
-    set_target_properties(BlazeUI PROPERTY POSITION_INDEPENDENT_CODE ON)
+    set_target_properties(BlazeUI PROPERTIES POSITION_INDEPENDENT_CODE ON)
 endif()
 
 target_include_directories(BlazeUI

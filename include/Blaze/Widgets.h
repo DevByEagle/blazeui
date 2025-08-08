@@ -1,18 +1,26 @@
 #pragma once
 
 #include <optional>
+#include <vector>
 #include "Blaze.h"
 
 namespace Blaze {
-    class BLAPI Element
+    struct Element
     {
     };
 
     class BLAPI Container
     {
+    // Properties
+    public:
+        Color backgroundColor;
+        std::vector<Element> children;
+    // Funcions
+    public:
+
     };
 
-    class BLAPI Label
+    class BLAPI Label : public Element
     {
     };
 }
