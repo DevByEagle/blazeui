@@ -1,5 +1,5 @@
-#include "pch.h"
-#include "Blaze/Blaze.h"
+#include <cmath>
+#include "Blaze/Graphics.h"
 
 namespace Blaze {
     Color Color::fromHSL(float hue, float saturation, float brightness, float opacity)
