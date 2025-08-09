@@ -12,6 +12,7 @@ namespace Blaze {
         bool IsRunning() const;
     private:
         bool m_Running = false;
+        std::unique_ptr<GraphicsDevice> m_GraphicsDevice;
     };
 
     class BLAPI Game : public Application {

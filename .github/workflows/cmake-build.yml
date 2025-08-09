@@ -1,0 +1,56 @@
+name: CMake Build (Cross-Platform)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies on Linux/macOS
+        if: matrix.os != 'windows-latest'
+        run: |
+          sudo apt-get update && sudo apt-get install -y cmake build-essential
+        shell: bash
+
+      - name: Install dependencies on Windows
+        if: matrix.os == 'windows-latest'
+        run: choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System' -y
+        shell: powershell
+
+      - name: Configure CMake
+        run: cmake -S . -B build
+
+      - name: Build
+        run: cmake --build build -- -j$(nproc)
+        if: matrix.os != 'windows-latest'
+        shell: bash
+
+      - name: Build on Windows
+        run: cmake --build build -- /m
+        if: matrix.os == 'windows-latest'
+        shell: powershell
+
+      - name: Run tests
+        run: |
+          cd build
+          ctest --output-on-failure
+        shell: bash
+        if: matrix.os != 'windows-latest'
+
+      - name: Run tests on Windows
+        run: |
+          cd build
+          ctest.exe --output-on-failure
+        shell: powershell
+        if: matrix.os == 'windows-latest'

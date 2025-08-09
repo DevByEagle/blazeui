@@ -1,7 +1,7 @@
 #include "Blaze/Game.h"
 
 namespace Blaze {
-    Application::Application(std::unique_ptr<GraphicsDevice>& graphicsDevice) : m_Running(true) 
+    Application::Application(std::unique_ptr<GraphicsDevice>& graphicsDevice) : m_Running(true), m_GraphicsDevice(std::move(graphicsDevice)) 
     {
     }
 
