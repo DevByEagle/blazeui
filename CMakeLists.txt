@@ -18,6 +18,11 @@ include_directories(include)
 
 add_library(BlazeUI ${SOURCES})
 
+if(WIN32)
+    target_link_libraries(BlazeUI PUBLIC gdi32)
+elseif(UNIX AND NOT APPLE)
+endif()
+
 if(BUILD_SHARED_LIBS)
     if(WIN32)
         set_target_properties(BlazeUI PROPERTIES PREFIX "")

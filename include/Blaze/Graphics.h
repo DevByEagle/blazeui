@@ -3,6 +3,10 @@
 #include "Blaze.h"
 
 namespace Blaze {
+    struct Color {
+        explicit Color() noexcept = default;
+    };
+    
     /**
      * @see Blaze::GraphicsDevice 
      */
@@ -24,9 +28,7 @@ namespace Blaze {
     class BLAPI GraphicsDevice {
     public:
         virtual ~GraphicsDevice() = default;
-    };
 
-    struct Color {
-        explicit Color() noexcept = default;
+        virtual void Clear(const Color& color);
     };
 }

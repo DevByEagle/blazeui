@@ -17,6 +17,5 @@ namespace Blaze {
 
     class Label : View<Label>
     {
-
     };
 }
