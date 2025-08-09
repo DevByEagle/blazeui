@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies on Linux/macOS
         if: matrix.os != 'windows-latest'
         run: |
-          sudo apt-get update && sudo apt-get install -y cmake build-essential
+          sudo apt update && sudo apt install -y cmake build-essential
         shell: bash
 
       - name: Install dependencies on Windows
