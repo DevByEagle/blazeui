@@ -25,4 +25,8 @@ namespace Blaze {
     public:
         virtual ~GraphicsDevice() = default;
     };
+
+    struct Color {
+        explicit Color() noexcept = default;
+    };
 }
